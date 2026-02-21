@@ -1,0 +1,46 @@
+backend:
+  replicaCount: 1
+  image:
+    repository: resilienceops/backend
+    pullPolicy: IfNotPresent
+    tag: "latest"
+  service:
+    type: ClusterIP
+    port: 8000
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+
+frontend:
+  replicaCount: 1
+  image:
+    repository: resilienceops/frontend
+    pullPolicy: IfNotPresent
+    tag: "latest"
+  service:
+    type: ClusterIP
+    port: 3000
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+  env:
+    NEXT_PUBLIC_API_URL: "http://backend:8000/api/v1"
+
+demoService:
+  replicaCount: 1
+  image:
+    repository: resilienceops/demo-service
+    pullPolicy: IfNotPresent
+    tag: "latest"
+  service:
+    type: ClusterIP
+    port: 8080
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+  env:
+    OTEL_EXPORTER_OTLP_ENDPOINT: "http://otel-collector:4317"
+    OTEL_SERVICE_NAME: "demo-service"
