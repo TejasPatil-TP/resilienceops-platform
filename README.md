@@ -307,3 +307,6 @@ The project is under active development. Upcoming features include:
 ## 30. Limitations and Project Disclaimer
 This platform is an open-source educational implementation designed to demonstrate real Site Reliability Engineering (SRE) and Platform Engineering concepts.
 **Do not deploy the failure-injection capabilities to production networks** without implementing robust authentication, authorization, and network isolation. The maintainers assume no liability for outages caused by misusing the experiment API.
+
+## 31. License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
